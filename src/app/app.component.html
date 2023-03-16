@@ -1,4 +1,3 @@
-
 <div class="container d-flex justify-content-center my-5">
     <input type="file" (change)="ReadExcel($event)" class="form-control w-50">
 </div>
@@ -10,21 +9,27 @@
                 <th>No.</th>
                 <th>Name</th>
                 <th>Mobile</th>
-                <th></th>
+                <th>
+                    <input type="checkbox" (change)="isCheck($event)" [value]="-1" [(ngModel)]="parentSelector">
+                </th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let items of excelData">
+            <tr *ngFor="let items of mapErr">
                 <td>{{items.no}}</td>
                 <td>{{items.name}}</td>
                 <td>{{items.mobile}}</td>
-                <td><input type="checkbox" checked></td>
+                <td>
+                
+                        <input type="checkbox" (change)="isCheck($event)" [value]="items.no" [checked]="items.myTick">
+                  
+                </td>
             </tr>
         </tbody>
     </table>
-    
+
 
     <div class="container text-center my-3">
-        <button class="btn btn-success" (click)="sendMsg()">Send Message</button>
+        <button class="btn btn-success" type="submit" (click)="lastData()" >Send Message</button>
     </div>
 </div>
